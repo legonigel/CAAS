@@ -1,0 +1,13 @@
+<h1>Nigel's Graduation Cap</h1>
+
+<form action="{% url 'main' %}" method="post">
+{% csrf_token %}
+<h2>Mode</h2>
+{% for choice, text in state.MODE_CHOICES %}
+		<input {% if choice == selected_mode %}checked{% endif %} type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice }}" />
+		<label for="choice{{ forloop.counter }}">{{ text }}</label><br />
+{% endfor %}
+<h2>Color</h2>
+{{ color_html }} <br /><br />
+<input type="submit" value="Update" />
+</form>
